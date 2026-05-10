@@ -108,5 +108,5 @@ APT29 was linked to the SolarWinds supply-chain compromise which affected multip
 ---
 
 ## 11. Conclusion
-
+ 
 APT29 demonstrates advanced cyber espionage capabilities through stealth, persistence, and sophisticated attack techniques. Continuous monitoring and ATT&CK-based detection strategies are critical for defending against such threat actors.
