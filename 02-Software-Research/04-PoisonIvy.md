@@ -1,35 +1,32 @@
-# PowerShell Attack Analysis
+# PoisonIvy Malware Analysis
 
 ## 1. Name & Type
 
-- Name: PowerShell
-- Type: Command-Line Shell and Scripting Environment
+- Name: PoisonIvy
+- Type: Remote Access Trojan (RAT)
 
 ---
 
 ## 2. Description
 
-PowerShell is a legitimate Microsoft scripting and automation framework widely used for system administration and task automation.
+PoisonIvy is a Remote Access Trojan (RAT) used by threat actors to establish persistent remote access to compromised systems. The malware supports command execution, surveillance, credential theft, data exfiltration, and attacker-controlled operations.
 
-Threat actors frequently abuse PowerShell for malicious execution, persistence, credential access, lateral movement, and command & control operations due to its powerful scripting capabilities and deep integration with Windows systems.
+PoisonIvy has historically been associated with espionage campaigns and targeted intrusions against enterprise and government environments.
 
 ---
 
 ## 3. Threat Actor Association
 
-Abused by:
-- APT29
-- FIN7
-- Wizard Spider
-- Multiple ransomware groups
+Used by:
+- APT1
+- APT groups
+- Espionage-focused threat actors
 
 ---
 
 ## 4. Supported Platforms
 
 - Windows
-- Linux
-- macOS
 
 ---
 
@@ -38,56 +35,56 @@ Abused by:
 | Technique ID | Technique Name |
 |---|---|
 | T1059 | Command and Scripting Interpreter |
-| T1086 | PowerShell |
-| T1027 | Obfuscated Files or Information |
+| T1547 | Boot or Logon Autostart Execution |
+| T1071 | Application Layer Protocol |
 | T1105 | Ingress Tool Transfer |
-| T1055 | Process Injection |
+| T1056 | Input Capture |
 
 ---
 
 ## 6. Execution Method
 
-- PowerShell console execution
-- Script execution
-- Encoded commands
-- Remote PowerShell sessions
+- Malicious executable delivery
+- Phishing attachments
+- DLL execution
+- Script-based delivery
 
 ---
 
 ## 7. Persistence Techniques
 
-- Scheduled Tasks
 - Registry Run Keys
-- Startup scripts
-- WMI event subscriptions
+- Service installation
+- Scheduled Tasks
+- Startup folder persistence
 
 ---
 
 ## 8. Privilege Escalation
 
-PowerShell may assist attackers through:
-- Administrative script execution
+PoisonIvy may support:
+- Administrative privilege abuse
 - Token manipulation
-- UAC bypass techniques
+- Process injection techniques
 
 ---
 
 ## 9. Defense Evasion
 
-- Encoded PowerShell commands
-- Obfuscated scripts
-- Fileless malware execution
-- In-memory execution
+- Obfuscated payloads
+- Encrypted communication
+- Hidden process activity
+- DLL side-loading
 
 ---
 
 ## 10. Credential Access
 
-PowerShell can facilitate:
-- Credential dumping
+PoisonIvy can facilitate:
+- Keylogging
+- Credential theft
 - Password harvesting
-- LSASS memory access
-- Token theft
+- Input capture
 
 ---
 
@@ -95,49 +92,55 @@ PowerShell can facilitate:
 
 - System information discovery
 - User account discovery
-- Network scanning
 - Process enumeration
+- File system discovery
 
 ---
 
 ## 12. Lateral Movement
 
-PowerShell supports:
-- Remote administration
-- WMI execution
-- SMB-based movement
-- Remote command execution
+Threat actors may combine PoisonIvy with:
+- SMB movement
+- Remote administrative tools
+- Credential reuse techniques
 
 ---
 
 ## 13. Command & Control
 
-Threat actors may use PowerShell scripts to establish encrypted communication channels with remote attacker-controlled infrastructure.
+PoisonIvy establishes remote communication channels with attacker-controlled infrastructure for command execution and remote surveillance.
 
 ---
 
 ## 14. Exfiltration
 
-PowerShell scripts may compress, encrypt, and transfer sensitive data to external servers.
+The malware may exfiltrate:
+- Credentials
+- Screenshots
+- Sensitive documents
+- System information
+
+to attacker-controlled systems.
 
 ---
 
 ## 15. Impact Analysis
 
-Malicious PowerShell activity can result in:
-- Remote code execution
+PoisonIvy infections can result in:
+- Persistent remote access
+- Espionage operations
 - Credential compromise
-- Enterprise-wide compromise
-- Persistent attacker access
+- Data theft
+- Enterprise compromise
 
 ---
 
 ## 16. Indicators of Compromise (IOCs)
 
-- Encoded PowerShell commands
-- Suspicious script execution
-- Abnormal parent-child process relationships
-- PowerShell network connections
+- Suspicious outbound traffic
+- Registry persistence artifacts
+- Keylogging-related behavior
+- Abnormal RAT activity
 
 ---
 
@@ -145,20 +148,20 @@ Malicious PowerShell activity can result in:
 
 ### Detection
 
-- Enable PowerShell logging
-- Monitor Event ID 4104
-- Detect encoded command execution
-- Analyze suspicious script activity
+- Monitor suspicious outbound communication
+- Detect persistence mechanism creation
+- Analyze RAT-related process activity
+- Monitor keylogging behavior
 
 ### Mitigation
 
-- Restrict unnecessary PowerShell usage
-- Enable constrained language mode
-- Deploy EDR solutions
-- Implement application control policies
+- Deploy endpoint protection solutions
+- Restrict unauthorized executable execution
+- Conduct phishing awareness training
+- Enable centralized logging
 
 ---
 
 ## 18. Conclusion
 
-PowerShell remains one of the most frequently abused legitimate tools in modern cyber attacks. Effective monitoring, script analysis, and ATT&CK-based detection strategies are essential for identifying malicious PowerShell activity within enterprise environments.
+PoisonIvy remains a historically significant Remote Access Trojan used in espionage and enterprise compromise operations. Organizations should implement ATT&CK-based monitoring, strong endpoint security, and persistence detection strategies to reduce exposure to PoisonIvy-related threats.
