@@ -1,34 +1,32 @@
-# BloodHound Analysis
+# Remcos Malware Analysis
 
 ## 1. Name & Type
 
-- Name: BloodHound
-- Type: Active Directory Enumeration and Attack Path Analysis Tool
+- Name: Remcos
+- Type: Remote Access Trojan (RAT)
 
 ---
 
 ## 2. Description
 
-BloodHound is an Active Directory (AD) reconnaissance and analysis tool designed to identify attack paths, privilege escalation opportunities, and trust relationships within enterprise environments.
+Remcos is a Remote Access Trojan (RAT) designed to provide attackers with remote control, surveillance, credential theft, and command execution capabilities on compromised systems.
 
-Threat actors frequently abuse BloodHound to map enterprise networks and identify high-value attack paths for lateral movement and domain compromise.
+Although originally marketed as a remote administration tool, Remcos has been widely abused in phishing campaigns, malware delivery operations, and unauthorized remote access attacks.
 
 ---
 
 ## 3. Threat Actor Association
 
 Used by:
-- APT groups
-- Ransomware operators
-- Red-team operators
-- Enterprise attackers
+- Cybercriminal groups
+- Malware operators
+- Phishing-based attack campaigns
 
 ---
 
 ## 4. Supported Platforms
 
 - Windows
-- Linux
 
 ---
 
@@ -36,107 +34,113 @@ Used by:
 
 | Technique ID | Technique Name |
 |---|---|
-| T1087 | Account Discovery |
-| T1018 | Remote System Discovery |
-| T1482 | Domain Trust Discovery |
-| T1069 | Permission Groups Discovery |
-| T1082 | System Information Discovery |
+| T1059 | Command and Scripting Interpreter |
+| T1547 | Boot or Logon Autostart Execution |
+| T1113 | Screen Capture |
+| T1056 | Input Capture |
+| T1071 | Application Layer Protocol |
 
 ---
 
 ## 6. Execution Method
 
-- Active Directory enumeration
-- LDAP queries
-- PowerShell collection scripts
-- SharpHound data collection
+- Malicious executable delivery
+- Phishing attachments
+- Script execution
+- Social engineering delivery
 
 ---
 
 ## 7. Persistence Techniques
 
-BloodHound itself is not primarily designed for persistence, but attackers may use collected information to establish:
-- Administrative persistence
-- Service-based persistence
-- Privileged account access
+- Registry Run Keys
+- Scheduled Tasks
+- Service installation
+- Startup folder persistence
 
 ---
 
 ## 8. Privilege Escalation
 
-BloodHound helps identify:
-- Privileged group memberships
-- Misconfigured permissions
-- Kerberos delegation abuse
-- Escalation attack paths
+Remcos may support:
+- Administrative privilege abuse
+- Token manipulation
+- Process injection techniques
 
 ---
 
 ## 9. Defense Evasion
 
-- Use of legitimate administrative protocols
-- Internal reconnaissance activity
-- LDAP-based enumeration
+- Obfuscated payloads
+- Encrypted communications
+- Hidden process activity
+- Persistence hiding techniques
 
 ---
 
 ## 10. Credential Access
 
-BloodHound supports analysis of:
-- Privileged account exposure
-- Administrative session discovery
-- Credential attack opportunities
+Remcos can facilitate:
+- Keylogging
+- Credential theft
+- Password harvesting
+- Clipboard monitoring
 
 ---
 
 ## 11. Discovery Techniques
 
-BloodHound specializes in:
-- Domain enumeration
-- Trust relationship mapping
-- User and group discovery
-- Session enumeration
+- System information discovery
+- User account discovery
+- File system enumeration
+- Process monitoring
 
 ---
 
 ## 12. Lateral Movement
 
-Attackers may use BloodHound findings to perform:
-- SMB-based movement
-- Remote administration
-- Administrative account abuse
-- Domain-wide compromise
+Threat actors may combine Remcos with:
+- SMB movement
+- Remote administrative tools
+- Credential reuse techniques
 
 ---
 
 ## 13. Command & Control
 
-BloodHound itself is not a command & control framework, but it is frequently deployed through post-exploitation frameworks such as Empire and Cobalt Strike.
+Remcos establishes encrypted communication channels with attacker-controlled infrastructure for remote attacker operations and surveillance.
 
 ---
 
 ## 14. Exfiltration
 
-Collected Active Directory data may be transferred to attacker-controlled systems for offline attack path analysis.
+The malware may exfiltrate:
+- Credentials
+- Screenshots
+- Sensitive documents
+- System information
+
+to attacker-controlled infrastructure.
 
 ---
 
 ## 15. Impact Analysis
 
-BloodHound abuse can result in:
-- Full Active Directory compromise
-- Privilege escalation
-- Enterprise-wide lateral movement
-- Administrative account exposure
+Remcos infections can result in:
+- Persistent attacker access
+- Credential compromise
+- Surveillance operations
+- Data theft
+- Enterprise compromise
 
 ---
 
 ## 16. Indicators of Compromise (IOCs)
 
-- Excessive LDAP queries
-- SharpHound execution artifacts
-- Abnormal Active Directory enumeration
-- Unusual administrative discovery activity
+- Suspicious outbound communication
+- Registry persistence artifacts
+- Keylogging-related behavior
+- Unusual RAT process activity
 
 ---
 
@@ -144,20 +148,20 @@ BloodHound abuse can result in:
 
 ### Detection
 
-- Monitor LDAP query activity
-- Detect SharpHound execution
-- Monitor abnormal enumeration behavior
-- Analyze suspicious PowerShell activity
+- Monitor suspicious outbound traffic
+- Detect unauthorized persistence mechanisms
+- Analyze abnormal process activity
+- Monitor keylogging-related behavior
 
 ### Mitigation
 
-- Restrict unnecessary administrative privileges
-- Harden Active Directory permissions
-- Implement tiered administration
-- Monitor privileged account usage
+- Deploy endpoint protection solutions
+- Restrict unauthorized executable execution
+- Enable phishing protection controls
+- Conduct security awareness training
 
 ---
 
 ## 18. Conclusion
 
-BloodHound remains one of the most powerful tools for Active Directory attack path analysis. Organizations should monitor enumeration activity, secure privileged accounts, and implement ATT&CK-based defensive strategies to reduce exposure to enterprise compromise.
+Remcos remains a widely abused Remote Access Trojan capable of supporting surveillance, credential theft, and persistent attacker operations. Organizations should implement ATT&CK-based monitoring, strong endpoint security controls, and persistence detection strategies to reduce exposure to Remcos-related threats.
