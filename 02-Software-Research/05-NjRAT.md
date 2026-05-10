@@ -1,27 +1,26 @@
-# PsExec Analysis
+# NjRAT Malware Analysis
 
 ## 1. Name & Type
 
-- Name: PsExec
-- Type: Remote Administration and Execution Tool
+- Name: NjRAT
+- Type: Remote Access Trojan (RAT)
 
 ---
 
 ## 2. Description
 
-PsExec is a legitimate Microsoft Sysinternals tool used for remote command execution and administrative management across Windows systems.
+NjRAT is a Remote Access Trojan (RAT) used by cybercriminals and threat actors to gain unauthorized remote access to compromised systems. The malware supports surveillance, credential theft, file management, command execution, and remote attacker control.
 
-Threat actors frequently abuse PsExec for lateral movement, remote execution, privilege escalation, and enterprise-wide compromise operations.
+NjRAT is commonly distributed through phishing campaigns, malicious downloads, and infected attachments.
 
 ---
 
 ## 3. Threat Actor Association
 
 Used by:
-- APT29
-- FIN7
-- Wizard Spider
-- Multiple ransomware groups
+- Cybercriminal groups
+- Financially motivated attackers
+- Malware distribution campaigns
 
 ---
 
@@ -35,105 +34,113 @@ Used by:
 
 | Technique ID | Technique Name |
 |---|---|
-| T1021 | Remote Services |
-| T1569 | System Services |
-| T1570 | Lateral Tool Transfer |
-| T1078 | Valid Accounts |
+| T1059 | Command and Scripting Interpreter |
+| T1547 | Boot or Logon Autostart Execution |
+| T1113 | Screen Capture |
+| T1056 | Input Capture |
+| T1071 | Application Layer Protocol |
 
 ---
 
 ## 6. Execution Method
 
-- Remote command execution
-- SMB-based execution
-- Administrative share abuse
-- Service-based execution
+- Malicious executable delivery
+- Phishing attachments
+- Drive-by downloads
+- Script execution
 
 ---
 
 ## 7. Persistence Techniques
 
-PsExec itself is not primarily a persistence tool, but attackers may combine it with:
+- Registry Run Keys
+- Startup folder persistence
+- Service installation
 - Scheduled Tasks
-- Service creation
-- Registry modifications
 
 ---
 
 ## 8. Privilege Escalation
 
-PsExec may assist attackers through:
-- Administrative account abuse
-- Service-level execution
-- Elevated remote sessions
+NjRAT may support:
+- Administrative privilege abuse
+- Process manipulation
+- Token-related abuse
 
 ---
 
 ## 9. Defense Evasion
 
-- Use of legitimate administrative tools
-- Remote execution through trusted protocols
-- Minimal malware footprint
+- Obfuscated payloads
+- Hidden process activity
+- Encrypted communications
+- Persistence hiding techniques
 
 ---
 
 ## 10. Credential Access
 
-PsExec often relies on:
-- Stolen credentials
-- Administrative passwords
-- Pass-the-Hash techniques
+NjRAT can facilitate:
+- Keylogging
+- Password theft
+- Credential harvesting
+- Input capture
 
 ---
 
 ## 11. Discovery Techniques
 
-- Network share discovery
-- Remote system enumeration
-- Administrative account identification
+- System information discovery
+- User account discovery
+- File system enumeration
+- Process monitoring
 
 ---
 
 ## 12. Lateral Movement
 
-PsExec is commonly used for:
-- Remote execution across enterprise systems
-- SMB-based lateral movement
-- Remote service deployment
+Threat actors may combine NjRAT with:
+- SMB movement
+- Remote administration tools
+- Credential reuse attacks
 
 ---
 
 ## 13. Command & Control
 
-Threat actors may deploy PsExec through:
-- Cobalt Strike
-- Empire frameworks
-- Remote command shells
+NjRAT establishes communication with attacker-controlled infrastructure to support remote surveillance and command execution.
 
 ---
 
 ## 14. Exfiltration
 
-PsExec itself is not primarily designed for exfiltration, but it may support remote data access and attacker-controlled operations.
+The malware may transfer:
+- Credentials
+- Screenshots
+- Sensitive documents
+- System information
+
+to attacker-controlled infrastructure.
 
 ---
 
 ## 15. Impact Analysis
 
-Abuse of PsExec can result in:
-- Enterprise-wide lateral movement
-- Remote attacker execution
-- Administrative compromise
-- Rapid ransomware deployment
+NjRAT infections can result in:
+- Persistent remote attacker access
+- Credential compromise
+- Surveillance activity
+- Data theft
+- Privacy violations
 
 ---
 
 ## 16. Indicators of Compromise (IOCs)
 
-- Suspicious service creation
-- Unusual SMB traffic
-- Remote command execution
-- Administrative share access
+- Suspicious outbound communication
+- Registry persistence artifacts
+- Keylogging behavior
+- Unusual RAT-related activity
 
 ---
 
@@ -141,20 +148,20 @@ Abuse of PsExec can result in:
 
 ### Detection
 
-- Monitor remote service creation
-- Detect unusual SMB activity
-- Analyze remote administrative execution
-- Monitor PsExec-related process creation
+- Monitor suspicious outbound traffic
+- Detect persistence mechanism creation
+- Analyze abnormal process behavior
+- Monitor keylogging-related activity
 
 ### Mitigation
 
-- Restrict administrative privileges
-- Limit SMB access
-- Enable network segmentation
-- Monitor remote execution tools
+- Deploy endpoint security solutions
+- Restrict unauthorized software execution
+- Enable phishing protection
+- Conduct security awareness training
 
 ---
 
 ## 18. Conclusion
 
-PsExec remains a commonly abused administrative tool in enterprise cyber attacks. Organizations should monitor remote administrative activity, detect lateral movement behavior, and implement ATT&CK-based detection strategies to reduce exposure to PsExec-related abuse.
+NjRAT remains a widely used Remote Access Trojan capable of supporting surveillance, credential theft, and remote attacker operations. Organizations should implement ATT&CK-based monitoring, strong endpoint protection, and persistence detection strategies to reduce exposure to NjRAT-related threats.
