@@ -1,108 +1,98 @@
 # MITRE ATT&CK Technique Mapping
 
-## Campaign: APT29
+## 1. Overview
 
-This document contains ATT&CK technique mappings identified during campaign and malware analysis research.
+This section maps the identified adversary behaviors, malware families, and attack activities observed during the research internship project to the MITRE ATT&CK framework.
+
+The mapping helps identify:
+- Adversary tactics
+- Attack techniques
+- Malware behavior
+- Detection opportunities
+- Defensive monitoring strategies
 
 ---
 
-# Initial Access
+# 2. ATT&CK Tactic Mapping
 
-| Technique ID | Technique Name |
+| Tactic | Technique ID | Technique Name |
+|---|---|---|
+| Initial Access | T1566 | Phishing |
+| Execution | T1059 | Command and Scripting Interpreter |
+| Persistence | T1547 | Boot or Logon Autostart Execution |
+| Privilege Escalation | T1055 | Process Injection |
+| Defense Evasion | T1027 | Obfuscated Files or Information |
+| Credential Access | T1056 | Input Capture |
+| Discovery | T1082 | System Information Discovery |
+| Lateral Movement | T1021 | Remote Services |
+| Collection | T1113 | Screen Capture |
+| Command and Control | T1071 | Application Layer Protocol |
+| Exfiltration | T1041 | Exfiltration Over C2 Channel |
+
+---
+
+# 3. Software-to-Technique Mapping
+
+| Software | Associated ATT&CK Techniques |
 |---|---|
-| T1566 | Phishing |
-| T1195 | Supply Chain Compromise |
+| Cobalt Strike | T1059, T1105, T1071 |
+| Mimikatz | T1003, T1056 |
+| Empire | T1059, T1547 |
+| PoisonIvy | T1056, T1071 |
+| NjRAT | T1113, T1056 |
+| QuasarRAT | T1113, T1547 |
+| Remcos | T1056, T1071 |
+| Brute Ratel C4 | T1055, T1071 |
+| PlugX | T1547, T1105 |
+| DarkComet | T1113, T1056 |
 
 ---
 
-# Execution
+# 4. APT29 Campaign ATT&CK Mapping
 
-| Technique ID | Technique Name |
-|---|---|
-| T1059 | Command and Scripting Interpreter |
-| T1204 | User Execution |
-
----
-
-# Persistence
-
-| Technique ID | Technique Name |
-|---|---|
-| T1547 | Boot or Logon Autostart Execution |
-| T1053 | Scheduled Task/Job |
+| ATT&CK Tactic | ATT&CK Technique | Description |
+|---|---|---|
+| Initial Access | Spearphishing Attachment | Malicious attachments used for access |
+| Execution | PowerShell Execution | Malicious command execution |
+| Persistence | Registry Run Keys | Persistence mechanisms |
+| Credential Access | Credential Dumping | Credential theft activities |
+| Discovery | System Information Discovery | Internal environment enumeration |
+| Lateral Movement | Remote Services | Internal network traversal |
+| Command & Control | Web Protocols | Encrypted attacker communication |
+| Exfiltration | Data Transfer | Sensitive information theft |
 
 ---
 
-# Privilege Escalation
+# 5. ATT&CK-Based Detection Opportunities
 
-| Technique ID | Technique Name |
-|---|---|
-| T1068 | Exploitation for Privilege Escalation |
-| T1134 | Access Token Manipulation |
+Security teams can improve detection by monitoring:
 
----
-
-# Defense Evasion
-
-| Technique ID | Technique Name |
-|---|---|
-| T1027 | Obfuscated Files or Information |
-| T1218 | Signed Binary Proxy Execution |
+- Suspicious PowerShell execution
+- Credential dumping behavior
+- Registry persistence mechanisms
+- Remote service creation
+- Process injection activity
+- Encrypted outbound communication
+- RAT-like behavior patterns
+- Suspicious phishing attachments
 
 ---
 
-# Credential Access
+# 6. Defensive Security Recommendations
 
-| Technique ID | Technique Name |
-|---|---|
-| T1003 | OS Credential Dumping |
-| T1555 | Credentials from Password Stores |
+Organizations should:
 
----
-
-# Discovery
-
-| Technique ID | Technique Name |
-|---|---|
-| T1082 | System Information Discovery |
-| T1018 | Remote System Discovery |
+- Deploy Endpoint Detection & Response (EDR)
+- Enable centralized log monitoring
+- Conduct phishing awareness training
+- Restrict administrative privileges
+- Implement network segmentation
+- Monitor ATT&CK-mapped attack patterns
+- Use threat intelligence feeds
+- Conduct regular security audits
 
 ---
 
-# Lateral Movement
+# 7. Conclusion
 
-| Technique ID | Technique Name |
-|---|---|
-| T1021 | Remote Services |
-| T1570 | Lateral Tool Transfer |
-
----
-
-# Command and Control
-
-| Technique ID | Technique Name |
-|---|---|
-| T1071 | Application Layer Protocol |
-| T1090 | Proxy |
-
----
-
-# Exfiltration
-
-| Technique ID | Technique Name |
-|---|---|
-| T1041 | Exfiltration Over C2 Channel |
-
----
-
-# Impact
-
-| Technique ID | Technique Name |
-|---|---|
-| T1486 | Data Encrypted for Impact |
-
----
-
-# Conclusion
-
-MITRE ATT&CK technique mapping provides structured visibility into adversary tactics, techniques, and procedures (TTPs). These mappings support threat detection, security monitoring, incident response, and defensive analysis activities.
+The MITRE ATT&CK framework provides a structured methodology for understanding adversary behavior, attack lifecycle stages, and malware capabilities. Mapping software tools and campaigns to ATT&CK techniques helps improve threat detection, incident response, and defensive cybersecurity operations.
