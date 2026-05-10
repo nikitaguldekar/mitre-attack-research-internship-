@@ -1,1 +1,0 @@
-Detection and mitigation research
