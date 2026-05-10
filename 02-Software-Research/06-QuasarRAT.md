@@ -1,35 +1,32 @@
-# Metasploit Framework Analysis
+# QuasarRAT Malware Analysis
 
 ## 1. Name & Type
 
-- Name: Metasploit
-- Type: Penetration Testing and Exploitation Framework
+- Name: QuasarRAT
+- Type: Remote Access Trojan (RAT)
 
 ---
 
 ## 2. Description
 
-Metasploit is a widely used penetration testing and exploitation framework designed for vulnerability assessment, payload delivery, privilege escalation, and post-exploitation activities.
+QuasarRAT is an open-source Remote Access Trojan (RAT) used by threat actors to establish persistent remote access, execute commands, monitor victims, steal credentials, and manage compromised systems remotely.
 
-Although intended for legitimate security testing, threat actors frequently abuse Metasploit during cyber attacks and unauthorized intrusions.
+The malware is commonly used in phishing campaigns, malware delivery operations, and unauthorized remote administration attacks.
 
 ---
 
 ## 3. Threat Actor Association
 
 Used by:
-- Multiple APT groups
-- Ransomware operators
-- Cybercriminal organizations
-- Red-team operators
+- Cybercriminal groups
+- Malware operators
+- Phishing-based attack campaigns
 
 ---
 
 ## 4. Supported Platforms
 
 - Windows
-- Linux
-- macOS
 
 ---
 
@@ -38,107 +35,112 @@ Used by:
 | Technique ID | Technique Name |
 |---|---|
 | T1059 | Command and Scripting Interpreter |
-| T1203 | Exploitation for Client Execution |
-| T1068 | Exploitation for Privilege Escalation |
-| T1105 | Ingress Tool Transfer |
-| T1021 | Remote Services |
+| T1547 | Boot or Logon Autostart Execution |
+| T1113 | Screen Capture |
+| T1056 | Input Capture |
+| T1071 | Application Layer Protocol |
 
 ---
 
 ## 6. Execution Method
 
-- Exploit module execution
-- Payload delivery
-- Remote shell execution
-- Script-based exploitation
+- Malicious executable delivery
+- Phishing attachments
+- Script execution
+- Remote payload delivery
 
 ---
 
 ## 7. Persistence Techniques
 
+- Registry Run Keys
 - Scheduled Tasks
-- Registry modifications
-- Startup persistence
-- Service creation
+- Startup folder persistence
+- Service installation
 
 ---
 
 ## 8. Privilege Escalation
 
-Metasploit supports:
-- Local privilege escalation exploits
+QuasarRAT may support:
+- Administrative privilege abuse
 - Token manipulation
-- Exploit chaining
+- Process injection techniques
 
 ---
 
 ## 9. Defense Evasion
 
-- Payload obfuscation
-- Encrypted communication
-- In-memory payload execution
-- Antivirus evasion modules
+- Obfuscated payloads
+- Hidden process activity
+- Encrypted communications
+- In-memory execution
 
 ---
 
 ## 10. Credential Access
 
-Metasploit can facilitate:
-- Credential dumping
+QuasarRAT can facilitate:
+- Keylogging
+- Credential theft
 - Password harvesting
-- Token theft
-- Session hijacking
+- Clipboard monitoring
 
 ---
 
 ## 11. Discovery Techniques
 
-- Network scanning
-- Service enumeration
-- User discovery
-- System information gathering
+- System information discovery
+- User account discovery
+- File system enumeration
+- Process monitoring
 
 ---
 
 ## 12. Lateral Movement
 
-Metasploit supports:
-- SMB-based movement
-- Remote service execution
-- PsExec modules
-- Remote shell deployment
+Threat actors may combine QuasarRAT with:
+- SMB movement
+- Remote administration tools
+- Credential reuse techniques
 
 ---
 
 ## 13. Command & Control
 
-Metasploit payloads can establish remote command & control channels using encrypted communication protocols.
+QuasarRAT establishes encrypted communication channels with attacker-controlled infrastructure to support remote administration and surveillance.
 
 ---
 
 ## 14. Exfiltration
 
-Threat actors may use Metasploit sessions to transfer sensitive information to external attacker-controlled systems.
+The malware may transfer:
+- Credentials
+- Screenshots
+- Clipboard data
+- Sensitive files
+
+to attacker-controlled systems.
 
 ---
 
 ## 15. Impact Analysis
 
-Metasploit abuse can result in:
-- Remote code execution
-- Enterprise compromise
-- Credential theft
-- Lateral movement
+QuasarRAT infections can result in:
 - Persistent attacker access
+- Credential compromise
+- Surveillance activity
+- Data theft
+- Enterprise compromise
 
 ---
 
 ## 16. Indicators of Compromise (IOCs)
 
-- Suspicious reverse shell connections
-- Unexpected payload execution
-- Exploit-related network traffic
-- Remote service creation
+- Suspicious outbound communication
+- Registry persistence artifacts
+- Keylogging-related behavior
+- Unusual RAT process activity
 
 ---
 
@@ -146,21 +148,21 @@ Metasploit abuse can result in:
 
 ### Detection
 
-- Monitor exploit-related activity
-- Detect reverse shell traffic
-- Analyze suspicious process behavior
-- Monitor remote service execution
+- Monitor suspicious outbound traffic
+- Detect unauthorized persistence mechanisms
+- Analyze abnormal process activity
+- Monitor keylogging-related behavior
 
 ### Mitigation
 
-- Apply security patches regularly
-- Restrict unnecessary services
-- Deploy EDR solutions
-- Conduct vulnerability management
+- Deploy endpoint protection solutions
+- Restrict unauthorized executable execution
+- Enable phishing protection controls
+- Conduct user awareness training
 
 ---
 
 ## 18. Conclusion
 
-Metasploit remains one of the most powerful and widely used exploitation frameworks in cybersecurity operations. Organizations should implement strong vulnerability management, monitoring, and ATT&CK-based defensive strategies to detect and mitigate Metasploit-related threats.
+QuasarRAT remains a widely abused Remote Access Trojan capable of supporting surveillance, credential theft, and persistent attacker access. Organizations should implement ATT&CK-based monitoring, endpoint security controls, and persistence detection strategies to reduce exposure to QuasarRAT-related threats.
  
