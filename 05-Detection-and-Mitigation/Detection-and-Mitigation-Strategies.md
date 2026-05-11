@@ -1,127 +1,125 @@
 # Detection and Mitigation Strategies
 
-## Overview
+## 1. Overview
 
-This document outlines security detection opportunities and mitigation strategies identified during campaign and malware analysis research.
+Detection and mitigation strategies help organizations identify, contain, and prevent malicious cyber activity associated with malware infections, adversary behavior, and MITRE ATT&CK techniques.
 
-The recommendations focus on improving organizational security monitoring, threat detection, and defensive response capabilities.
-
----
-
-# Detection Opportunities
-
-## 1. PowerShell Monitoring
-
-### Detection Focus
-- Encoded PowerShell commands
-- Suspicious script execution
-- Unusual parent-child process relationships
-
-### Monitoring Recommendations
-- Enable PowerShell logging
-- Monitor Event ID 4104
-- Detect obfuscated commands
+This section focuses on defensive security controls, threat monitoring, and mitigation approaches relevant to the researched malware families and APT activities.
 
 ---
 
-# 2. Credential Dumping Detection
+# 2. Detection Objectives
 
-### Detection Focus
-- LSASS memory access
-- Mimikatz-related activity
-- Unauthorized credential access
+Security teams should focus on detecting:
 
-### Monitoring Recommendations
-- Enable endpoint detection solutions
-- Monitor suspicious process injection
-- Detect abnormal administrative behavior
-
----
-
-# 3. Lateral Movement Monitoring
-
-### Detection Focus
-- PsExec execution
-- SMB-based movement
-- Remote service creation
-
-### Monitoring Recommendations
-- Monitor remote service creation
-- Detect unusual administrative logins
-- Monitor network segmentation violations
+- Suspicious process execution
+- Registry persistence activity
+- Credential dumping attempts
+- Remote administration behavior
+- Phishing-related attacks
+- Command & Control communication
+- Process injection techniques
+- Unauthorized PowerShell execution
 
 ---
 
-# 4. Command and Control Detection
+# 3. Endpoint Detection Strategies
 
-### Detection Focus
-- Beaconing traffic
-- Encrypted outbound connections
-- Abnormal DNS activity
-
-### Monitoring Recommendations
-- Analyze outbound network traffic
-- Detect periodic beaconing behavior
-- Monitor suspicious domain communication
-
----
-
-# 5. Persistence Detection
-
-### Detection Focus
-- Registry Run Keys
-- Scheduled task creation
-- Startup folder modifications
-
-### Monitoring Recommendations
-- Monitor registry modifications
-- Detect unauthorized scheduled tasks
-- Audit startup locations
+| Detection Area | Monitoring Focus |
+|---|---|
+| Process Monitoring | Suspicious executable behavior |
+| Registry Monitoring | Persistence-related registry changes |
+| File Monitoring | Malicious payload delivery |
+| Script Monitoring | PowerShell and script abuse |
+| Credential Access | LSASS access attempts |
+| RAT Detection | Remote administration activity |
 
 ---
 
-# Mitigation Strategies
+# 4. Network Detection Strategies
 
-## Access Control
-
-- Implement Multi-Factor Authentication (MFA)
-- Restrict administrative privileges
-- Enforce least privilege principles
-
----
-
-## Endpoint Security
-
-- Deploy Endpoint Detection & Response (EDR)
-- Enable centralized logging
-- Conduct regular vulnerability scanning
+| Detection Area | Monitoring Focus |
+|---|---|
+| Outbound Traffic | Suspicious external communication |
+| DNS Requests | Malicious or suspicious domains |
+| Beaconing Activity | Periodic C2 communication |
+| Encrypted Traffic | Abnormal outbound encrypted traffic |
+| Remote Services | Unauthorized remote connections |
 
 ---
 
-## Network Security
+# 5. ATT&CK-Based Detection Mapping
 
-- Segment critical systems
-- Restrict unnecessary network communication
-- Monitor suspicious outbound traffic
-
----
-
-## User Awareness
-
-- Conduct phishing awareness training
-- Educate employees on social engineering attacks
-- Promote secure credential management
+| ATT&CK Technique | Detection Opportunity |
+|---|---|
+| T1059 | Monitor suspicious command execution |
+| T1547 | Detect persistence mechanism creation |
+| T1055 | Analyze process injection activity |
+| T1071 | Monitor encrypted outbound communication |
+| T1113 | Detect unauthorized screen capture behavior |
+| T1056 | Identify keylogging-related activity |
 
 ---
 
-## Incident Response
+# 6. Malware Detection Examples
 
-- Maintain incident response procedures
-- Conduct regular security exercises
-- Improve threat intelligence integration
+| Malware | Detection Focus |
+|---|---|
+| Cobalt Strike | Beacon traffic detection |
+| Mimikatz | Credential dumping behavior |
+| PoisonIvy | Registry persistence activity |
+| NjRAT | Keylogging-related activity |
+| QuasarRAT | Remote administration behavior |
+| Remcos | Suspicious outbound communication |
+| PlugX | DLL side-loading detection |
+| DarkComet | Screen capture behavior |
 
 ---
 
-# Conclusion
+# 7. Mitigation Strategies
 
-Effective threat detection and mitigation require continuous monitoring, ATT&CK-based analysis, and proactive defensive security practices. Organizations should combine technical controls, monitoring capabilities, and user awareness to reduce exposure to advanced cyber threats.
+Organizations should implement:
+
+- Endpoint Detection & Response (EDR)
+- Multi-factor authentication (MFA)
+- Network segmentation
+- Application allowlisting
+- Centralized logging
+- Security awareness training
+- Regular patch management
+- Least privilege access control
+
+---
+
+# 8. Incident Response Recommendations
+
+During malware incidents, organizations should:
+
+1. Isolate affected systems
+2. Preserve forensic evidence
+3. Analyze malicious processes
+4. Identify persistence mechanisms
+5. Block malicious communication
+6. Reset compromised credentials
+7. Conduct IOC-based threat hunting
+8. Monitor for reinfection attempts
+
+---
+
+# 9. Security Best Practices
+
+Recommended best practices include:
+
+- Conduct regular vulnerability assessments
+- Monitor ATT&CK-aligned attack behavior
+- Restrict unauthorized software execution
+- Enable advanced logging policies
+- Deploy email security controls
+- Train users against phishing attacks
+- Perform regular security audits
+
+---
+
+# 10. Conclusion
+
+Detection and mitigation strategies are essential for reducing organizational exposure to malware infections, credential theft, remote attacker operations, and advanced cyber threats. ATT&CK-based defensive monitoring improves visibility, strengthens incident response, and enhances enterprise cybersecurity resilience.
