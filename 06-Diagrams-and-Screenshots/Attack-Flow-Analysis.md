@@ -1,73 +1,161 @@
-# Attack Flow Analysis
+# Cyber Attack Flow Analysis
 
-## APT29 Attack Flow
+## 1. Overview
+
+This section explains the typical cyber attack lifecycle observed in malware campaigns, APT operations, and adversary behavior mapped to the MITRE ATT&CK framework.
+
+The attack flow demonstrates how threat actors move from initial compromise to persistence, credential theft, command & control, and data exfiltration.
+
+---
+
+# 2. Cyber Attack Lifecycle
 
 ```text
-Initial Access
-      ↓
-Phishing / Supply Chain Compromise
-      ↓
-Execution
-      ↓
-PowerShell / Script Execution
-      ↓
-Credential Access
-      ↓
-Credential Dumping (Mimikatz)
-      ↓
-Privilege Escalation
-      ↓
-Administrative Access
-      ↓
-Lateral Movement
-      ↓
-Remote Services / PsExec
-      ↓
-Command & Control
-      ↓
-Encrypted C2 Communication
-      ↓
-Data Collection
-      ↓
-Sensitive Information Gathering
-      ↓
-Exfiltration
-      ↓
-Data Transfer to External Infrastructure
+1. Initial Access
+        ↓
+2. Execution
+        ↓
+3. Persistence
+        ↓
+4. Privilege Escalation
+        ↓
+5. Defense Evasion
+        ↓
+6. Credential Access
+        ↓
+7. Discovery
+        ↓
+8. Lateral Movement
+        ↓
+9. Command & Control
+        ↓
+10. Data Exfiltration
 ```
 
 ---
 
-# Analysis Summary
+# 3. ATT&CK-Based Attack Flow
 
-The attack flow demonstrates how advanced threat actors establish initial access, escalate privileges, move laterally, and maintain long-term persistence within target environments.
-
-The attack chain aligns closely with MITRE ATT&CK tactics and techniques commonly observed in sophisticated espionage campaigns.
-
----
-
-# Key Techniques Observed
-
-| ATT&CK Tactic | Example Technique |
-|---|---|
-| Initial Access | T1566 – Phishing |
-| Execution | T1059 – Command Execution |
-| Credential Access | T1003 – Credential Dumping |
-| Lateral Movement | T1021 – Remote Services |
-| Command & Control | T1071 – Application Layer Protocol |
+| Attack Stage | ATT&CK Technique | Description |
+|---|---|---|
+| Initial Access | T1566 | Phishing-based access |
+| Execution | T1059 | Malicious command execution |
+| Persistence | T1547 | Registry persistence mechanisms |
+| Privilege Escalation | T1055 | Process injection |
+| Defense Evasion | T1027 | Obfuscated payloads |
+| Credential Access | T1056 | Keylogging and credential theft |
+| Discovery | T1082 | System information discovery |
+| Lateral Movement | T1021 | Remote service usage |
+| Command & Control | T1071 | Encrypted attacker communication |
+| Exfiltration | T1041 | Data transfer to attacker systems |
 
 ---
 
-# Defensive Focus Areas
+# 4. Malware Attack Workflow
 
-- Monitor phishing attempts
-- Detect PowerShell abuse
-- Monitor credential dumping activity
-- Restrict remote administrative tools
-- Detect suspicious outbound communication
+## Step 1 — Phishing Delivery
+
+Attackers distribute:
+- Malicious email attachments
+- Fake documents
+- Infected executables
+- Malicious download links
 
 ---
 
-# Conclusion
+## Step 2 — Malware Execution
 
-Understanding attack flow analysis improves threat detection, incident response, and defensive security operations by identifying adversary behavior patterns across the attack lifecycle.
+The victim executes the malicious payload, allowing malware such as:
+- Cobalt Strike
+- PlugX
+- NjRAT
+- Remcos
+
+to establish access.
+
+---
+
+## Step 3 — Persistence Establishment
+
+Threat actors create persistence using:
+- Registry Run Keys
+- Scheduled Tasks
+- Startup folders
+- Service installation
+
+---
+
+## Step 4 — Credential Theft
+
+Attackers attempt:
+- Keylogging
+- Password theft
+- Credential dumping
+- Session monitoring
+
+using malware such as:
+- Mimikatz
+- PoisonIvy
+- DarkComet
+
+---
+
+## Step 5 — Command & Control Communication
+
+Compromised systems communicate with attacker-controlled infrastructure using:
+- HTTP/HTTPS
+- Encrypted channels
+- Beacon traffic
+- Remote administration communication
+
+---
+
+## Step 6 — Internal Discovery & Lateral Movement
+
+Threat actors perform:
+- System discovery
+- Network enumeration
+- Remote service abuse
+- Internal movement across systems
+
+---
+
+## Step 7 — Data Exfiltration
+
+Sensitive data may be:
+- Collected
+- Compressed
+- Encrypted
+- Exfiltrated
+
+to external attacker infrastructure.
+
+---
+
+# 5. Detection Opportunities
+
+Security teams should monitor:
+- Suspicious process execution
+- Registry persistence activity
+- Beaconing traffic
+- Unauthorized remote administration
+- Keylogging behavior
+- Encrypted outbound communication
+
+---
+
+# 6. Defensive Security Controls
+
+Recommended controls include:
+- Endpoint Detection & Response (EDR)
+- Centralized logging
+- Network segmentation
+- Multi-factor authentication
+- Security awareness training
+- ATT&CK-based threat hunting
+
+---
+
+# 7. Conclusion
+
+Understanding the cyber attack lifecycle helps organizations improve threat detection, incident response, malware analysis, and ATT&CK-based defensive operations. Mapping attacker behavior to ATT&CK stages improves visibility into real-world cyber threats and enterprise attack patterns.
